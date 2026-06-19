@@ -244,7 +244,7 @@ export const MountainIntro = () => {
         <video
           ref={videoRef}
           className="intro-video-bg"
-          src="./mountains.mp4"
+          src={`${import.meta.env.BASE_URL}mountains.mp4`}
           type="video/mp4"
           muted
           playsInline
