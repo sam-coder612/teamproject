@@ -1,0 +1,139 @@
+.intro-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #020617;
+  z-index: 999;
+  overflow: hidden;
+  will-change: opacity;
+}
+
+.intro-sticky {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Video cover alignment */
+.intro-video-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0) scale(1);
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: cover;
+  z-index: 1;
+  will-change: transform, opacity;
+}
+
+/* Smooth contrast overlay */
+.intro-video-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(15, 23, 42, 0.45) 0%,
+    rgba(15, 23, 42, 0.25) 50%,
+    #020617 100%
+  );
+  z-index: 2;
+}
+
+/* Text reveal spacing */
+.intro-text {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: var(--white);
+  z-index: 3;
+  width: 90%;
+  max-width: 800px;
+  will-change: transform, opacity;
+}
+
+.intro-title {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+  color: var(--white);
+  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.55);
+  margin-bottom: 0.5rem;
+}
+
+.intro-subtitle {
+  font-family: var(--font-heading);
+  font-size: clamp(1.2rem, 0.8rem + 1.5vw, 1.8rem);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+  margin-bottom: 2.5rem;
+}
+
+/* Mouse Wheel Prompt styling */
+.scroll-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+.mouse-wheel {
+  width: 26px;
+  height: 42px;
+  border: 2px solid var(--white);
+  border-radius: 20px;
+  position: relative;
+}
+
+.mouse-wheel::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background-color: var(--teal);
+  border-radius: 50%;
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: scrollWheelAnim 1.6s infinite ease-in-out;
+}
+
+@keyframes scrollWheelAnim {
+  0% {
+    top: 8px;
+    opacity: 1;
+  }
+  50% {
+    top: 24px;
+    opacity: 0.3;
+  }
+  100% {
+    top: 8px;
+    opacity: 1;
+  }
+}
+
+/* Hidden overlay modifier */
+.intro-wrapper.hidden {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
+}
